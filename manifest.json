@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+  "name": "Lyst",
+  "version": "0.0.1",
+  "description": "On the fly Youtube playlist creation.",
+
+  "page_action": {
+    "default_title": "Show PlayLyst"
+    /*"default_popup": "popup.html"*/
+  },
+
+  "background": {
+    "scripts": ["js/background.js"],
+    "persistent": false
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://www.youtube.com/*"],
+      "css": ["css/ytInject.css"],
+      "js": ["js/jquery.js","js/ytInject.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "permissions": [
+      "activeTab",
+      "notifications",
+      "webNavigation",
+      "*://www.youtube.com/*"
+  ]
+}
